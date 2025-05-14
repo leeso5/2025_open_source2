@@ -51,12 +51,11 @@ def get_ticket_number():
 menus = [["아이스 아메리카노", 0, 2000], ["카페 라떼", 0, 2500], ["유자차", 0, 2400], ["자바칩 프라푸치노", 0, 7000]]  # [[메뉴, 수량, 단가], ...]
 #prices = [2000, 2500, 2400, 7000]
 
-menu_lists = ""
-for i in range(len(menus)):
-    menu_lists = menu_lists + f"{i+1}) {menus[i][0]} "
+menu_lists = "".join([f"{i+1}) {menus[i][0]} " for  i in range(len(menus))])
+menu_lists = menu_lists + f"{len(menus)+1}) 주문 종료 : "
 
 while True:
-    menu = input(f"{menu_lists}{len(menus)+1}) 주문 종료 : ")
+    menu = input(menu_lists)
     if 0 < int(menu) <= len(menus):  # 1 ~ 4
         select_menu(int(menu)-1)
     elif menu == "5":
